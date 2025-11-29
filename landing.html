@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Réservez votre table Del Arte en ligne en quelques secondes">
+    <title>Réservation Del Arte - Votre table vous attend</title>
+
+    <style>
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f5f1;
+        }
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #8B2635;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #8B2635, #B8324D);
+            border-radius: 8px;
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .header-cta {
+            background-color: #8B2635;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.3);
+        }
+
+        .header-cta:hover {
+            background-color: #6d1d2a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 38, 53, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%238B2635" width="1200" height="800"/><circle fill="%23B8324D" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%23D4AF37" opacity="0.2" cx="900" cy="600" r="150"/><circle fill="%23FFF" opacity="0.1" cx="600" cy="400" r="200"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #D4AF37;
+            color: #1a1a1a;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background-color: #F4D03F;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Widget Section */
+        .widget-section {
+            padding: 4rem 2rem;
+            background-color: #fff;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-in 0.3s forwards;
+        }
+
+        .widget-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .widget-title {
+            text-align: center;
+            color: #8B2635;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .zenchef-wrapper {
+            background-color: #f8f5f1;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Fallback button */
+        .fallback-button {
+            display: block;
+            text-align: center;
+            background-color: #8B2635;
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 2rem auto;
+            max-width: 400px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .fallback-button:hover {
+            background-color: #6d1d2a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 38, 53, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c2c2c;
+            color: #f8f5f1;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B2635, #B8324D);
+            border-radius: 10px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #F4D03F;
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .logo-placeholder {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .header-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .widget-title {
+                font-size: 1.5rem;
+            }
+
+            .zenchef-wrapper {
+                padding: 1rem;
+            }
+
+            .widget-section {
+                padding: 2rem 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero {
+                min-height: 60vh;
+            }
+        }
+
+        /* Loading animation for widget */
+        .widget-loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #8B2635;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">
+            <div class="logo-placeholder">DA</div>
+            <span>Del Arte</span>
+        </a>
+        <a href="#reservation" class="header-cta">Réserver</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Votre table vous attend</h1>
+            <p>Réservez en ligne en quelques secondes</p>
+            <a href="#reservation" class="cta-button">Réserver maintenant</a>
+        </div>
+    </section>
+
+    <!-- Widget Section -->
+    <section id="reservation" class="widget-section">
+        <div class="widget-container">
+            <h2 class="widget-title">Choisissez votre créneau</h2>
+            <div class="zenchef-wrapper">
+                <!-- Widget Loading -->
+                <div class="widget-loading" id="widgetLoading">
+                    <div class="spinner"></div>
+                    <p>Chargement du système de réservation...</p>
+                </div>
+
+                <!-- Zenchef Widget Container -->
+                <div
+                    class="zc-widget-config"
+                    data-restaurant="355028"
+                    data-open="2000">
+                </div>
+
+                <!-- Fallback Button (hidden by default) -->
+                <a href="https://bookings.zenchef.com/results?rid=355028&pid=1001"
+                   class="fallback-button"
+                   id="fallbackButton"
+                   style="display: none;">
+                    Réserver sur ZenChef
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <div class="footer-logo-placeholder">DA</div>
+        </div>
+        <nav class="footer-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Politique de confidentialité</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="footer-copyright">
+            © 2025 Del Arte - Tous droits réservés
+        </div>
+    </footer>
+
+    <!-- Zenchef Widget SDK -->
+    <script>
+    ;(function (d, s, id) {
+      const el = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id) || el.parentNode == null) {return;}
+      var js = d.createElement(s);
+      js.id = id;
+      js.async = true;
+      js.src = 'https://sdk.zenchef.com/v1/sdk.min.js';
+      el.parentNode.insertBefore(js, el);
+    })(document, 'script', 'zenchef-sdk')
+    </script>
+
+    <!-- Custom JS -->
+    <script>
+        // Hide loading indicator once widget loads
+        setTimeout(function() {
+            const loadingDiv = document.getElementById('widgetLoading');
+            if (loadingDiv) {
+                loadingDiv.style.display = 'none';
+            }
+        }, 3000);
+
+        // Fallback: show button if widget doesn't load after 10 seconds
+        setTimeout(function() {
+            const widgetConfig = document.querySelector('.zc-widget-config');
+            const fallbackButton = document.getElementById('fallbackButton');
+
+            // Check if widget has loaded (it should have children or specific classes)
+            if (widgetConfig && widgetConfig.children.length === 0) {
+                if (fallbackButton) {
+                    fallbackButton.style.display = 'block';
+                }
+            }
+        }, 10000);
+
+        // Smooth scroll enhancement (for older browsers)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add tracking for CTA clicks (optional - ready for Meta Pixel)
+        document.querySelectorAll('.cta-button, .header-cta').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('CTA clicked:', this.textContent);
+                // Add your Meta Pixel tracking here
+                // fbq('track', 'InitiateCheckout');
+            });
+        });
+    </script>
+</body>
+</html>
