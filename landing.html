@@ -47,18 +47,10 @@
             align-items: center;
         }
 
-        .logo-placeholder {
-            width: 50px;
+        .logo img {
             height: 50px;
-            background: linear-gradient(135deg, #8B2635, #B8324D);
-            border-radius: 8px;
+            width: auto;
             margin-right: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
         }
 
         .header-cta {
@@ -90,8 +82,8 @@
             justify-content: center;
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%238B2635" width="1200" height="800"/><circle fill="%23B8324D" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%23D4AF37" opacity="0.2" cx="900" cy="600" r="150"/><circle fill="%23FFF" opacity="0.1" cx="600" cy="400" r="200"/></svg>');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('assets/img/delarte_martigues_hero.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -127,22 +119,22 @@
 
         .cta-button {
             display: inline-block;
-            background-color: #D4AF37;
-            color: #1a1a1a;
+            background-color: #228B54;
+            color: #ffffff;
             padding: 1.2rem 3rem;
             font-size: 1.2rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 25px rgba(34, 139, 84, 0.4);
             border: 2px solid transparent;
         }
 
         .cta-button:hover {
-            background-color: #F4D03F;
+            background-color: #1a6d42;
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 12px 35px rgba(34, 139, 84, 0.6);
         }
 
         /* Widget Section */
@@ -207,18 +199,11 @@
             margin-bottom: 1.5rem;
         }
 
-        .footer-logo-placeholder {
-            width: 60px;
+        .footer-logo img {
             height: 60px;
-            background: linear-gradient(135deg, #8B2635, #B8324D);
-            border-radius: 10px;
+            width: auto;
             margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
+            display: block;
         }
 
         .footer-links {
@@ -230,13 +215,13 @@
         }
 
         .footer-links a {
-            color: #D4AF37;
+            color: #228B54;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #F4D03F;
+            color: #1a6d42;
         }
 
         .footer-copyright {
@@ -270,10 +255,8 @@
                 font-size: 1.3rem;
             }
 
-            .logo-placeholder {
-                width: 40px;
+            .logo img {
                 height: 40px;
-                font-size: 1rem;
             }
 
             .header-cta {
@@ -340,8 +323,7 @@
     <!-- Header -->
     <header class="header">
         <a href="#" class="logo">
-            <div class="logo-placeholder">DA</div>
-            <span>Del Arte</span>
+            <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </a>
         <a href="#reservation" class="header-cta">Réserver</a>
     </header>
@@ -387,7 +369,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-logo">
-            <div class="footer-logo-placeholder">DA</div>
+            <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </div>
         <nav class="footer-links">
             <a href="#">Mentions légales</a>
