@@ -6,6 +6,11 @@
     <meta name="description" content="Réservez votre table Del Arte en ligne en quelques secondes">
     <title>Réservation Del Arte - Votre table vous attend</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
         /* Reset et base */
         * {
@@ -19,7 +24,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f8f5f1;
@@ -49,23 +54,23 @@
             width: auto;
         }
 
-        /* Hero Section */
+        /* Hero Section - Improved */
         .hero {
             position: relative;
-            min-height: 70vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 2rem;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(194, 23, 50, 0.7) 0%, rgba(2, 129, 55, 0.6) 100%),
                         url('assets/img/delarte_martigues_hero.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: white;
             opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
+            animation: fadeIn 1.2s ease-out forwards;
         }
 
         @keyframes fadeIn {
@@ -75,70 +80,234 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             z-index: 1;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
             font-weight: 300;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            letter-spacing: 0.02em;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .cta-button {
             display: inline-block;
             background-color: #028137;
             color: #ffffff;
-            padding: 1.2rem 3rem;
-            font-size: 1.2rem;
+            padding: 1.4rem 3.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(2, 129, 55, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(2, 129, 55, 0.4);
             border: 2px solid transparent;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
         }
 
         .cta-button:hover {
             background-color: #016428;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(2, 129, 55, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(2, 129, 55, 0.6);
         }
 
         /* Widget Section */
         .widget-section {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             background-color: #fff;
             opacity: 0;
             animation: fadeIn 1.2s ease-in 0.3s forwards;
         }
 
         .widget-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .widget-title {
             text-align: center;
             color: #C21732;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
             font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .zenchef-wrapper {
             background-color: #f8f5f1;
             padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        /* ZenChef iframe - Auto height */
+        .zenchef-wrapper iframe {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            display: block;
+            min-height: 500px;
+            transition: height 0.3s ease;
+        }
+
+        /* Contact Popup */
+        .contact-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .contact-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .contact-popup {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 25px 25px 0 0;
+            box-shadow: 0 -10px 50px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .contact-popup.active {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .contact-header {
+            padding: 2rem 2rem 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+            position: relative;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #C21732;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .contact-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 35px;
+            height: 35px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        .contact-close:hover {
+            background-color: #C21732;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .contact-body {
+            padding: 2rem;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            color: #028137;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-detail {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .contact-detail-icon {
+            color: #C21732;
+            font-weight: bold;
+            min-width: 20px;
+        }
+
+        .contact-detail-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .contact-detail a {
+            color: #028137;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail a:hover {
+            color: #016428;
+            text-decoration: underline;
+        }
+
+        .contact-map {
+            width: 100%;
+            height: 300px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 2px solid #e5e5e5;
+            margin-top: 1.5rem;
         }
 
         /* Footer */
@@ -173,6 +342,7 @@
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 500;
+            cursor: pointer;
         }
 
         .footer-links a:hover {
@@ -190,17 +360,23 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                min-height: 75vh;
+                padding: 3rem 1.5rem;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.8rem;
             }
 
             .hero p {
                 font-size: 1.2rem;
+                margin-bottom: 2rem;
             }
 
             .cta-button {
-                padding: 1rem 2rem;
-                font-size: 1rem;
+                padding: 1.2rem 2.5rem;
+                font-size: 0.9rem;
             }
 
             .header {
@@ -212,26 +388,35 @@
             }
 
             .widget-title {
-                font-size: 1.5rem;
+                font-size: 2rem;
+            }
+
+            .widget-section {
+                padding: 3rem 1rem;
             }
 
             .zenchef-wrapper {
                 padding: 1rem;
             }
 
-            .widget-section {
-                padding: 2rem 1rem;
-            }
-
             .footer-links {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .contact-popup {
+                max-width: 100%;
+                border-radius: 20px 20px 0 0;
+            }
+
+            .contact-body {
+                padding: 1.5rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 2.2rem;
             }
 
             .hero p {
@@ -239,30 +424,12 @@
             }
 
             .hero {
-                min-height: 60vh;
+                min-height: 65vh;
             }
-        }
 
-        /* Loading animation for widget */
-        .widget-loading {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #028137;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            .widget-title {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
@@ -290,11 +457,9 @@
             <div class="zenchef-wrapper">
                 <!-- ZenChef iFrame Embed -->
                 <iframe
+                    id="zenchef-iframe"
                     src="https://bookings.zenchef.com/results?rid=355028&pid=1001"
-                    width="100%"
-                    height="800"
-                    frameborder="0"
-                    style="border: none; border-radius: 10px; min-height: 800px;">
+                    frameborder="0">
                 </iframe>
             </div>
         </div>
@@ -308,20 +473,61 @@
         <nav class="footer-links">
             <a href="#">Mentions légales</a>
             <a href="#">Politique de confidentialité</a>
-            <a href="#">Contact</a>
+            <a href="#" id="contact-trigger">Contact</a>
         </nav>
         <div class="footer-copyright">
             © 2025 Del Arte - Tous droits réservés
         </div>
     </footer>
 
+    <!-- Contact Popup -->
+    <div class="contact-overlay" id="contact-overlay"></div>
+    <div class="contact-popup" id="contact-popup">
+        <div class="contact-header">
+            <h2 class="contact-title">Nous contacter</h2>
+            <button class="contact-close" id="contact-close" aria-label="Fermer">×</button>
+        </div>
+        <div class="contact-body">
+            <div class="contact-info">
+                <h3>Del Arte Martigues</h3>
+
+                <div class="contact-detail">
+                    <span class="contact-detail-icon">📍</span>
+                    <div class="contact-detail-text">
+                        Av. Auguste Baron<br>
+                        13500 Martigues
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-detail-icon">📞</span>
+                    <div class="contact-detail-text">
+                        <a href="tel:+33442318501">04 42 31 85 01</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Maps Embed -->
+            <iframe
+                class="contact-map"
+                src="https://www.google.com/maps?q=Av.+Auguste+Baron+13500+Martigues&z=15&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
     <!-- Custom JS -->
     <script>
-        // Smooth scroll enhancement (for older browsers)
+        // ========== Smooth Scroll ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '#contact-trigger') return;
+
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -331,7 +537,86 @@
             });
         });
 
-        // Add tracking for CTA clicks (optional - ready for Meta Pixel)
+        // ========== Contact Popup ==========
+        const contactTrigger = document.getElementById('contact-trigger');
+        const contactOverlay = document.getElementById('contact-overlay');
+        const contactPopup = document.getElementById('contact-popup');
+        const contactClose = document.getElementById('contact-close');
+
+        function openContactPopup() {
+            contactOverlay.classList.add('active');
+            contactPopup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactPopup() {
+            contactOverlay.classList.remove('active');
+            contactPopup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        contactTrigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            openContactPopup();
+        });
+
+        contactClose.addEventListener('click', closeContactPopup);
+        contactOverlay.addEventListener('click', closeContactPopup);
+
+        // Prevent popup close when clicking inside
+        contactPopup.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && contactPopup.classList.contains('active')) {
+                closeContactPopup();
+            }
+        });
+
+        // ========== Auto-resize ZenChef iframe ==========
+        const zenchefIframe = document.getElementById('zenchef-iframe');
+
+        // Try to detect iframe content changes and adjust height
+        function adjustIframeHeight() {
+            try {
+                // Check if we can access iframe content (same-origin only)
+                const iframeContent = zenchefIframe.contentWindow.document.body;
+                if (iframeContent) {
+                    const height = iframeContent.scrollHeight;
+                    zenchefIframe.style.height = height + 'px';
+                }
+            } catch (e) {
+                // Cross-origin - use ResizeObserver on iframe element itself
+                console.log('Cross-origin iframe, using default sizing');
+            }
+        }
+
+        // Use ResizeObserver if available
+        if ('ResizeObserver' in window) {
+            const resizeObserver = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    // Adjust based on content
+                    adjustIframeHeight();
+                }
+            });
+            resizeObserver.observe(zenchefIframe);
+        }
+
+        // Listen for messages from iframe (if ZenChef sends them)
+        window.addEventListener('message', function(e) {
+            if (e.data && e.data.height) {
+                zenchefIframe.style.height = e.data.height + 'px';
+            }
+        });
+
+        // Initial load
+        zenchefIframe.addEventListener('load', function() {
+            setTimeout(adjustIframeHeight, 500);
+        });
+
+        // ========== CTA Tracking ==========
         document.querySelectorAll('.cta-button').forEach(button => {
             button.addEventListener('click', function() {
                 console.log('CTA clicked:', this.textContent);
