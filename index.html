@@ -73,6 +73,7 @@
             transition: all 0.3s ease;
             border: none;
             box-shadow: 0 2px 10px rgba(2, 129, 55, 0.3);
+            position: relative;
         }
 
         .header-contact-icon:hover {
@@ -81,10 +82,10 @@
             box-shadow: 0 4px 15px rgba(2, 129, 55, 0.5);
         }
 
-        .header-contact-icon::before {
-            content: "📞";
-            font-size: 1.5rem;
-            color: white;
+        .header-contact-icon img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
         }
 
         .header-spacer {
@@ -286,7 +287,7 @@
 
         .zenchef-wrapper {
             background-color: #f8f5f1;
-            padding: 2rem;
+            padding: 0.5rem;
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
@@ -297,7 +298,7 @@
             border: none;
             border-radius: 10px;
             display: block;
-            height: 900px;
+            height: 750px;
             max-height: none;
         }
 
@@ -527,7 +528,7 @@
             }
 
             .zenchef-wrapper {
-                padding: 1rem;
+                padding: 0.5rem;
             }
 
             .footer-links {
@@ -602,7 +603,9 @@
         <a href="/" class="logo">
             <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </a>
-        <button class="header-contact-icon" id="header-contact-btn" aria-label="Contact"></button>
+        <button class="header-contact-icon" id="header-contact-btn" aria-label="Contact">
+            <img src="assets/img/location_pin.svg" alt="Contact">
+        </button>
     </header>
 
     <!-- Hero Section -->
