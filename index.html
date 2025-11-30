@@ -39,8 +39,14 @@
             top: 0;
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+        }
+
+        .header .logo {
+            flex: 1;
+            display: flex;
+            justify-content: center;
         }
 
         .logo {
@@ -52,6 +58,123 @@
         .logo img {
             height: 60px;
             width: auto;
+        }
+
+        /* Contact Icon in Header */
+        .header-contact-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #028137;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 10px rgba(2, 129, 55, 0.3);
+        }
+
+        .header-contact-icon:hover {
+            background-color: #016428;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(2, 129, 55, 0.5);
+        }
+
+        .header-contact-icon::before {
+            content: "✉";
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .header-spacer {
+            width: 45px;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            padding: 1.5rem 2rem;
+            z-index: 10000;
+            display: none;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 250px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .cookie-btn-accept {
+            background-color: #028137;
+            color: white;
+        }
+
+        .cookie-btn-accept:hover {
+            background-color: #016428;
+        }
+
+        .cookie-btn-refuse {
+            background-color: #C21732;
+            color: white;
+        }
+
+        .cookie-btn-refuse:hover {
+            background-color: #9a1227;
+        }
+
+        .cookie-btn-customize {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .cookie-btn-customize:hover {
+            background-color: #e0e0e0;
         }
 
         /* Hero Section - Improved */
@@ -82,10 +205,10 @@
         .hero-content {
             max-width: 900px;
             z-index: 1;
-            animation: slideUp 1s ease-out 0.3s both;
+            animation: slideUpHero 1s ease-out 0.3s both;
         }
 
-        @keyframes slideUp {
+        @keyframes slideUpHero {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -166,18 +289,16 @@
             padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            /* Removed overflow: hidden to allow natural height expansion */
         }
 
-        /* ZenChef iframe - Auto height */
+        /* ZenChef iframe - Very large height to prevent internal scroll */
         .zenchef-wrapper iframe {
             width: 100%;
             border: none;
             border-radius: 10px;
             display: block;
-            min-height: 400px;
-            height: auto;
-            /* Container grows naturally with iframe content - no internal scroll */
+            height: 2000px;
+            max-height: none;
         }
 
         /* Contact Popup */
@@ -204,7 +325,6 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            /* Start position: off-screen below */
             transform: translate(-50%, calc(-50% + 100vh));
             width: 100%;
             max-width: 600px;
@@ -218,7 +338,6 @@
         }
 
         .contact-popup.active {
-            /* End position: centered vertically and horizontally */
             transform: translate(-50%, -50%);
         }
 
@@ -390,6 +509,15 @@
                 height: 50px;
             }
 
+            .header-contact-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header-contact-icon::before {
+                font-size: 1.3rem;
+            }
+
             .widget-title {
                 font-size: 2rem;
             }
@@ -415,6 +543,21 @@
             .contact-body {
                 padding: 1.5rem;
             }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .cookie-btn {
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -433,15 +576,33 @@
             .widget-title {
                 font-size: 1.6rem;
             }
+
+            .header-spacer {
+                width: 40px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content">
+            <p class="cookie-text">Ce site utilise des cookies pour améliorer votre expérience et mesurer l'efficacité de nos publicités.</p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accepter</button>
+                <button class="cookie-btn cookie-btn-refuse" onclick="refuseCookies()">Refuser</button>
+                <button class="cookie-btn cookie-btn-customize" onclick="customizeCookies()">Personnaliser</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
-        <a href="#" class="logo">
+        <div class="header-spacer"></div>
+        <a href="/" class="logo">
             <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </a>
+        <button class="header-contact-icon" id="header-contact-btn" aria-label="Contact"></button>
     </header>
 
     <!-- Hero Section -->
@@ -462,7 +623,8 @@
                 <iframe
                     id="zenchef-iframe"
                     src="https://bookings.zenchef.com/results?rid=355028&pid=1001"
-                    frameborder="0">
+                    frameborder="0"
+                    scrolling="no">
                 </iframe>
             </div>
         </div>
@@ -474,8 +636,8 @@
             <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </div>
         <nav class="footer-links">
-            <a href="#">Mentions légales</a>
-            <a href="#">Politique de confidentialité</a>
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="politique-confidentialite.html">Politique de confidentialité</a>
             <a href="#" id="contact-trigger">Contact</a>
         </nav>
         <div class="footer-copyright">
@@ -523,6 +685,35 @@
 
     <!-- Custom JS -->
     <script>
+        // ========== Cookie Banner ==========
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                document.getElementById('cookie-banner').classList.add('show');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookie-banner').classList.remove('show');
+            // Initialize tracking scripts here
+            console.log('Cookies accepted');
+        }
+
+        function refuseCookies() {
+            localStorage.setItem('cookieConsent', 'refused');
+            document.getElementById('cookie-banner').classList.remove('show');
+            console.log('Cookies refused');
+        }
+
+        function customizeCookies() {
+            // Could open a modal with more options
+            alert('Fonctionnalité de personnalisation à venir. Pour l\'instant, veuillez accepter ou refuser tous les cookies.');
+        }
+
+        // Show banner on page load if not consented
+        window.addEventListener('load', checkCookieConsent);
+
         // ========== Smooth Scroll ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -542,6 +733,7 @@
 
         // ========== Contact Popup ==========
         const contactTrigger = document.getElementById('contact-trigger');
+        const headerContactBtn = document.getElementById('header-contact-btn');
         const contactOverlay = document.getElementById('contact-overlay');
         const contactPopup = document.getElementById('contact-popup');
         const contactClose = document.getElementById('contact-close');
@@ -563,6 +755,11 @@
             openContactPopup();
         });
 
+        headerContactBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openContactPopup();
+        });
+
         contactClose.addEventListener('click', closeContactPopup);
         contactOverlay.addEventListener('click', closeContactPopup);
 
@@ -576,47 +773,6 @@
             if (e.key === 'Escape' && contactPopup.classList.contains('active')) {
                 closeContactPopup();
             }
-        });
-
-        // ========== Auto-resize ZenChef iframe ==========
-        const zenchefIframe = document.getElementById('zenchef-iframe');
-
-        // Try to detect iframe content changes and adjust height
-        function adjustIframeHeight() {
-            try {
-                // Check if we can access iframe content (same-origin only)
-                const iframeContent = zenchefIframe.contentWindow.document.body;
-                if (iframeContent) {
-                    const height = iframeContent.scrollHeight;
-                    zenchefIframe.style.height = height + 'px';
-                }
-            } catch (e) {
-                // Cross-origin - use ResizeObserver on iframe element itself
-                console.log('Cross-origin iframe, using default sizing');
-            }
-        }
-
-        // Use ResizeObserver if available
-        if ('ResizeObserver' in window) {
-            const resizeObserver = new ResizeObserver(entries => {
-                for (let entry of entries) {
-                    // Adjust based on content
-                    adjustIframeHeight();
-                }
-            });
-            resizeObserver.observe(zenchefIframe);
-        }
-
-        // Listen for messages from iframe (if ZenChef sends them)
-        window.addEventListener('message', function(e) {
-            if (e.data && e.data.height) {
-                zenchefIframe.style.height = e.data.height + 'px';
-            }
-        });
-
-        // Initial load
-        zenchefIframe.addEventListener('load', function() {
-            setTimeout(adjustIframeHeight, 500);
         });
 
         // ========== CTA Tracking ==========
