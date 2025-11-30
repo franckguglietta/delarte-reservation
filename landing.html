@@ -28,49 +28,25 @@
         /* Header */
         .header {
             background-color: #fff;
-            padding: 1rem 2rem;
+            padding: 1.5rem 2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #8B2635;
             text-decoration: none;
             display: flex;
             align-items: center;
         }
 
         .logo img {
-            height: 50px;
+            height: 60px;
             width: auto;
-            margin-right: 0.5rem;
-        }
-
-        .header-cta {
-            background-color: #8B2635;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.3);
-        }
-
-        .header-cta:hover {
-            background-color: #6d1d2a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 38, 53, 0.4);
         }
 
         /* Hero Section */
@@ -119,7 +95,7 @@
 
         .cta-button {
             display: inline-block;
-            background-color: #228B54;
+            background-color: #028137;
             color: #ffffff;
             padding: 1.2rem 3rem;
             font-size: 1.2rem;
@@ -127,14 +103,14 @@
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(34, 139, 84, 0.4);
+            box-shadow: 0 8px 25px rgba(2, 129, 55, 0.4);
             border: 2px solid transparent;
         }
 
         .cta-button:hover {
-            background-color: #1a6d42;
+            background-color: #016428;
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(34, 139, 84, 0.6);
+            box-shadow: 0 12px 35px rgba(2, 129, 55, 0.6);
         }
 
         /* Widget Section */
@@ -152,7 +128,7 @@
 
         .widget-title {
             text-align: center;
-            color: #8B2635;
+            color: #C21732;
             font-size: 2rem;
             margin-bottom: 2rem;
             font-weight: 600;
@@ -165,32 +141,10 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        /* Fallback button */
-        .fallback-button {
-            display: block;
-            text-align: center;
-            background-color: #8B2635;
-            color: white;
-            padding: 1.5rem 2rem;
-            margin: 2rem auto;
-            max-width: 400px;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .fallback-button:hover {
-            background-color: #6d1d2a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(139, 38, 53, 0.3);
-        }
-
         /* Footer */
         .footer {
-            background-color: #2c2c2c;
-            color: #f8f5f1;
+            background-color: #028137;
+            color: #ffffff;
             padding: 3rem 2rem 1.5rem;
             text-align: center;
         }
@@ -204,6 +158,7 @@
             width: auto;
             margin: 0 auto 1rem;
             display: block;
+            filter: brightness(0) invert(1);
         }
 
         .footer-links {
@@ -215,21 +170,23 @@
         }
 
         .footer-links a {
-            color: #228B54;
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         .footer-links a:hover {
-            color: #1a6d42;
+            color: #f0f0f0;
+            text-decoration: underline;
         }
 
         .footer-copyright {
             font-size: 0.9rem;
-            color: #999;
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 1px solid #444;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         /* Responsive */
@@ -251,17 +208,8 @@
                 padding: 1rem;
             }
 
-            .logo {
-                font-size: 1.3rem;
-            }
-
             .logo img {
-                height: 40px;
-            }
-
-            .header-cta {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
+                height: 50px;
             }
 
             .widget-title {
@@ -305,7 +253,7 @@
 
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #8B2635;
+            border-top: 4px solid #028137;
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -325,7 +273,6 @@
         <a href="#" class="logo">
             <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </a>
-        <a href="#reservation" class="header-cta">Réserver</a>
     </header>
 
     <!-- Hero Section -->
@@ -352,16 +299,8 @@
                 <div
                     class="zc-widget-config"
                     data-restaurant="355028"
-                    data-open="2000">
+                    data-open="0">
                 </div>
-
-                <!-- Fallback Button (hidden by default) -->
-                <a href="https://bookings.zenchef.com/results?rid=355028&pid=1001"
-                   class="fallback-button"
-                   id="fallbackButton"
-                   style="display: none;">
-                    Réserver sur ZenChef
-                </a>
             </div>
         </div>
     </section>
@@ -404,19 +343,6 @@
             }
         }, 3000);
 
-        // Fallback: show button if widget doesn't load after 10 seconds
-        setTimeout(function() {
-            const widgetConfig = document.querySelector('.zc-widget-config');
-            const fallbackButton = document.getElementById('fallbackButton');
-
-            // Check if widget has loaded (it should have children or specific classes)
-            if (widgetConfig && widgetConfig.children.length === 0) {
-                if (fallbackButton) {
-                    fallbackButton.style.display = 'block';
-                }
-            }
-        }, 10000);
-
         // Smooth scroll enhancement (for older browsers)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -432,7 +358,7 @@
         });
 
         // Add tracking for CTA clicks (optional - ready for Meta Pixel)
-        document.querySelectorAll('.cta-button, .header-cta').forEach(button => {
+        document.querySelectorAll('.cta-button').forEach(button => {
             button.addEventListener('click', function() {
                 console.log('CTA clicked:', this.textContent);
                 // Add your Meta Pixel tracking here
