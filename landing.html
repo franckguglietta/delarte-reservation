@@ -288,18 +288,14 @@
         <div class="widget-container">
             <h2 class="widget-title">Choisissez votre créneau</h2>
             <div class="zenchef-wrapper">
-                <!-- Widget Loading -->
-                <div class="widget-loading" id="widgetLoading">
-                    <div class="spinner"></div>
-                    <p>Chargement du système de réservation...</p>
-                </div>
-
-                <!-- Zenchef Widget Container -->
-                <div
-                    class="zc-widget-config"
-                    data-restaurant="355028"
-                    data-type="inline">
-                </div>
+                <!-- ZenChef iFrame Embed -->
+                <iframe
+                    src="https://bookings.zenchef.com/results?rid=355028&pid=1001"
+                    width="100%"
+                    height="800"
+                    frameborder="0"
+                    style="border: none; border-radius: 10px; min-height: 800px;">
+                </iframe>
             </div>
         </div>
     </section>
@@ -319,29 +315,8 @@
         </div>
     </footer>
 
-    <!-- Zenchef Widget SDK -->
-    <script>
-    ;(function (d, s, id) {
-      const el = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id) || el.parentNode == null) {return;}
-      var js = d.createElement(s);
-      js.id = id;
-      js.async = true;
-      js.src = 'https://sdk.zenchef.com/v1/sdk.min.js';
-      el.parentNode.insertBefore(js, el);
-    })(document, 'script', 'zenchef-sdk')
-    </script>
-
     <!-- Custom JS -->
     <script>
-        // Hide loading indicator once widget loads
-        setTimeout(function() {
-            const loadingDiv = document.getElementById('widgetLoading');
-            if (loadingDiv) {
-                loadingDiv.style.display = 'none';
-            }
-        }, 3000);
-
         // Smooth scroll enhancement (for older browsers)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
