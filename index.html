@@ -130,10 +130,10 @@
 
         /* Cocarde */
         .cocarde-container {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
             z-index: 10;
         }
 
@@ -143,16 +143,10 @@
             filter: drop-shadow(0 6px 16px rgba(0,0,0,0.15));
         }
 
-        /* Hero wrapper to contain hero + cocarde */
-        .hero-wrapper {
-            position: relative;
-            margin-bottom: 0;
-        }
-
         /* Main Content Container */
         .main-content {
             max-width: 1400px;
-            margin: -80px auto 0;
+            margin: -40px auto 0;
             padding: 0 2rem 4rem;
         }
 
@@ -168,7 +162,8 @@
         .restaurant-card {
             background-color: #f8f5f1;
             border-radius: 25px;
-            padding: 3rem 3rem 2rem;
+            padding: 3rem 3rem 1.5rem;
+            align-self: start;
         }
 
         .restaurant-card h2 {
@@ -176,14 +171,14 @@
             font-size: 2.8rem;
             color: #d50000;
             text-transform: uppercase;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             line-height: 1;
             letter-spacing: 0.01em;
         }
 
         .restaurant-card h3 {
             font-family: 'Bannertype', 'Arial Black', sans-serif;
-            font-size: 2rem;
+            font-size: 2.3rem;
             color: #2C3038;
             font-weight: 700;
             margin-bottom: 2rem;
@@ -270,7 +265,7 @@
             border: none;
             border-radius: 10px;
             display: block;
-            height: 650px;
+            height: 720px;
         }
 
         /* Cookie Banner */
@@ -512,10 +507,10 @@
 
         .contact-subtitle {
             font-family: 'Bannertype', 'Arial Black', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2.1rem;
             color: #2C3038;
             font-weight: 700;
-            margin-top: 0.3rem;
+            margin-top: 0.2rem;
             text-transform: uppercase;
         }
 
@@ -678,21 +673,13 @@
                 display: none;
             }
 
-            .hero-wrapper {
-                margin-bottom: 0;
-            }
-
-            .cocarde-container {
-                bottom: 0;
-            }
-
             .cocarde-container img {
                 width: 120px;
             }
 
             .main-content {
                 padding: 0 1rem 2rem;
-                margin-top: -60px;
+                margin-top: -30px;
             }
 
             /* Reorder on mobile */
@@ -727,7 +714,7 @@
             }
 
             .restaurant-card h3 {
-                font-size: 1.7rem;
+                font-size: 1.9rem;
             }
 
             .header {
@@ -764,7 +751,7 @@
             }
 
             .contact-subtitle {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
             }
 
             .cookie-main {
@@ -797,20 +784,12 @@
                 font-size: 2rem;
             }
 
-            .hero-wrapper {
-                margin-bottom: 0;
-            }
-
-            .cocarde-container {
-                bottom: 0;
-            }
-
             .cocarde-container img {
                 width: 100px;
             }
 
             .main-content {
-                margin-top: -50px;
+                margin-top: -25px;
             }
 
             .widget-card h2,
@@ -819,7 +798,7 @@
             }
 
             .restaurant-card h3 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -890,16 +869,14 @@
     </header>
 
     <!-- Hero Section -->
-    <div class="hero-wrapper">
-        <section class="hero">
-            <h1>Votre table vous attend</h1>
-            <p>Réservez en ligne en quelques secondes</p>
-        </section>
+    <section class="hero">
+        <h1>Votre table vous attend</h1>
+        <p>Réservez en ligne en quelques secondes</p>
+    </section>
 
-        <!-- Cocarde -->
-        <div class="cocarde-container">
-            <img src="assets/img/cocarde.svg" alt="Cocarde italienne">
-        </div>
+    <!-- Cocarde -->
+    <div class="cocarde-container">
+        <img src="assets/img/cocarde.svg" alt="Cocarde italienne">
     </div>
 
     <!-- Main Content -->
