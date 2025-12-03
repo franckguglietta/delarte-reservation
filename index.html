@@ -94,7 +94,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 35vh;
+            min-height: 32vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -131,7 +131,7 @@
         /* Cocarde */
         .cocarde-container {
             position: absolute;
-            bottom: -60px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
@@ -146,13 +146,13 @@
         /* Hero wrapper to contain hero + cocarde */
         .hero-wrapper {
             position: relative;
-            margin-bottom: 70px;
+            margin-bottom: 0;
         }
 
         /* Main Content Container */
         .main-content {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: -80px auto 0;
             padding: 0 2rem 4rem;
         }
 
@@ -168,8 +168,7 @@
         .restaurant-card {
             background-color: #f8f5f1;
             border-radius: 25px;
-            padding: 3rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            padding: 3rem 3rem 2rem;
         }
 
         .restaurant-card h2 {
@@ -177,14 +176,14 @@
             font-size: 2.8rem;
             color: #d50000;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             line-height: 1;
             letter-spacing: 0.01em;
         }
 
         .restaurant-card h3 {
             font-family: 'Bannertype', 'Arial Black', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #2C3038;
             font-weight: 700;
             margin-bottom: 2rem;
@@ -271,7 +270,7 @@
             border: none;
             border-radius: 10px;
             display: block;
-            height: 750px;
+            height: 650px;
         }
 
         /* Cookie Banner */
@@ -513,10 +512,10 @@
 
         .contact-subtitle {
             font-family: 'Bannertype', 'Arial Black', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #2C3038;
             font-weight: 700;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
             text-transform: uppercase;
         }
 
@@ -666,7 +665,7 @@
         @media (max-width: 768px) {
             /* Hero becomes banner */
             .hero {
-                min-height: 30vh;
+                min-height: 28vh;
                 padding: 2rem 1.5rem;
             }
 
@@ -680,11 +679,11 @@
             }
 
             .hero-wrapper {
-                margin-bottom: 50px;
+                margin-bottom: 0;
             }
 
             .cocarde-container {
-                bottom: -50px;
+                bottom: 0;
             }
 
             .cocarde-container img {
@@ -693,6 +692,7 @@
 
             .main-content {
                 padding: 0 1rem 2rem;
+                margin-top: -60px;
             }
 
             /* Reorder on mobile */
@@ -727,7 +727,7 @@
             }
 
             .restaurant-card h3 {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
             }
 
             .header {
@@ -764,7 +764,7 @@
             }
 
             .contact-subtitle {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
 
             .cookie-main {
@@ -790,7 +790,7 @@
 
         @media (max-width: 480px) {
             .hero {
-                min-height: 25vh;
+                min-height: 23vh;
             }
 
             .hero h1 {
@@ -798,20 +798,28 @@
             }
 
             .hero-wrapper {
-                margin-bottom: 40px;
+                margin-bottom: 0;
             }
 
             .cocarde-container {
-                bottom: -40px;
+                bottom: 0;
             }
 
             .cocarde-container img {
                 width: 100px;
             }
 
+            .main-content {
+                margin-top: -50px;
+            }
+
             .widget-card h2,
             .restaurant-card h2 {
                 font-size: 1.8rem;
+            }
+
+            .restaurant-card h3 {
+                font-size: 1.6rem;
             }
         }
     </style>
