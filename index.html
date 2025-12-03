@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Réservez votre table Del Arte en ligne en quelques secondes">
-    <title>Réservation Del Arte - Votre table vous attend</title>
+    <meta name="description" content="Réservez votre table Del Arte Martigues en ligne en quelques secondes">
+    <title>Réservation Del Arte Martigues - Votre table vous attend</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* Bannertype Font */
+        @font-face {
+            font-family: 'Bannertype';
+            src: url('assets/font/Bannertype-Bold-Condensed-compress.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* Reset et base */
         * {
             margin: 0;
@@ -26,44 +35,41 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f5f1;
+            color: #2C3038;
+            background-color: #ffffff;
         }
 
         /* Header */
         .header {
             background-color: #fff;
             padding: 1.5rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header .logo {
-            flex: 1;
-            display: flex;
             justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
         .logo {
-            text-decoration: none;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
 
         .logo img {
-            height: 60px;
+            height: 70px;
             width: auto;
         }
 
         /* Contact Icon in Header */
         .header-contact-icon {
-            width: 45px;
-            height: 45px;
+            position: absolute;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
             background-color: #ffffff;
             border-radius: 50%;
             display: flex;
@@ -71,28 +77,204 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: none;
-            box-shadow: 0 2px 10px rgba(2, 129, 55, 0.3);
-            position: relative;
+            border: 2px solid #f0f0f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .header-contact-icon:hover {
-            background-color: #ffffff;
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(2, 129, 55, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(213, 0, 0, 0.2);
         }
 
         .header-contact-icon img {
             width: 24px;
             height: 24px;
-            filter: none;
         }
 
-        .header-spacer {
-            width: 45px;
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('assets/img/delarte_hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 6rem;
+            margin-bottom: 0;
         }
 
-        /* Cookie Banner - New System */
+        .hero-logo {
+            margin-bottom: 2rem;
+        }
+
+        .hero-logo img {
+            height: 100px;
+            width: auto;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+        }
+
+        .hero h1 {
+            font-family: 'Bannertype', 'Arial Black', sans-serif;
+            font-size: 4.5rem;
+            font-weight: bold;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            line-height: 1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            opacity: 0.98;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Cocarde */
+        .cocarde-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: -60px;
+            margin-bottom: 3rem;
+            z-index: 10;
+        }
+
+        .cocarde-container img {
+            width: 180px;
+            height: auto;
+            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.15));
+        }
+
+        /* Main Content Container */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* Two Column Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        /* Restaurant Info Card (Left Column) */
+        .restaurant-card {
+            background-color: #f8f5f1;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .restaurant-card h2 {
+            font-family: 'Bannertype', 'Arial Black', sans-serif;
+            font-size: 2.8rem;
+            color: #d50000;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            letter-spacing: 0.01em;
+        }
+
+        .restaurant-card h3 {
+            font-size: 1.8rem;
+            color: #2C3038;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: #2C3038;
+        }
+
+        .contact-item img {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .contact-item span {
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .contact-item a {
+            color: #2C3038;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #d50000;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        /* Widget Card (Right Column) */
+        .widget-card {
+            background-color: #2C3038;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .widget-card h2 {
+            font-family: 'Bannertype', 'Arial Black', sans-serif;
+            font-size: 2.8rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-align: center;
+            line-height: 1;
+            letter-spacing: 0.01em;
+        }
+
+        .zenchef-wrapper {
+            background-color: transparent;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .zenchef-wrapper iframe {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            display: block;
+            height: 750px;
+        }
+
+        /* Cookie Banner */
         .cookie-banner {
             position: fixed;
             bottom: 0;
@@ -155,12 +337,12 @@
         }
 
         .cookie-btn-accept {
-            background-color: #028137;
+            background-color: #d50000;
             color: white;
         }
 
         .cookie-btn-accept:hover {
-            background-color: #016428;
+            background-color: #a30000;
         }
 
         .cookie-btn-essential {
@@ -175,13 +357,13 @@
 
         .cookie-btn-customize {
             background-color: transparent;
-            color: #028137;
+            color: #d50000;
             text-decoration: underline;
             padding: 0.8rem 1rem;
         }
 
         .cookie-btn-customize:hover {
-            color: #016428;
+            color: #a30000;
         }
 
         /* Cookie Customization Panel */
@@ -255,7 +437,7 @@
         }
 
         .toggle-switch input:checked + .toggle-slider {
-            background-color: #028137;
+            background-color: #d50000;
         }
 
         .toggle-switch input:checked + .toggle-slider:before {
@@ -263,7 +445,7 @@
         }
 
         .toggle-switch input:disabled + .toggle-slider {
-            background-color: #028137;
+            background-color: #d50000;
             opacity: 0.6;
             cursor: not-allowed;
         }
@@ -273,105 +455,6 @@
             display: flex;
             justify-content: flex-end;
             gap: 1rem;
-        }
-
-        /* Hero Section - 2 Columns Desktop */
-        .hero {
-            position: relative;
-            min-height: 90vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            padding: 4rem 3rem;
-            background: linear-gradient(135deg, rgba(194, 23, 50, 0.7) 0%, rgba(2, 129, 55, 0.6) 100%),
-                        url('assets/img/delarte_martigues_hero.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            opacity: 0;
-            animation: fadeIn 1.2s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .hero-left {
-            z-index: 1;
-            animation: slideUpHero 1s ease-out 0.3s both;
-        }
-
-        @keyframes slideUpHero {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-left h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-
-        .hero-left p {
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 0.02em;
-            opacity: 0.95;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            margin: 0;
-        }
-
-        /* Hero Widget - Right Column */
-        .hero-widget {
-            z-index: 2;
-            animation: slideUpHero 1s ease-out 0.5s both;
-        }
-
-        .hero-widget-container {
-            background-color: #f8f5f1;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .hero-widget-title {
-            text-align: center;
-            color: #C21732;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .zenchef-wrapper {
-            background-color: #f8f5f1;
-            padding: 0.5rem;
-            border-radius: 15px;
-        }
-
-        /* ZenChef iframe */
-        .zenchef-wrapper iframe {
-            width: 100%;
-            border: none;
-            border-radius: 10px;
-            display: block;
-            height: 750px;
-            max-height: none;
         }
 
         /* Contact Popup */
@@ -400,8 +483,8 @@
             left: 50%;
             transform: translate(-50%, calc(-50% + 100vh));
             width: 100%;
-            max-width: 600px;
-            background-color: #ffffff;
+            max-width: 700px;
+            background-color: #f8f5f1;
             border-radius: 25px;
             box-shadow: 0 10px 50px rgba(0,0,0,0.3);
             z-index: 9999;
@@ -415,27 +498,35 @@
         }
 
         .contact-header {
-            padding: 2rem 2rem 1.5rem;
-            border-bottom: 1px solid #e5e5e5;
+            padding: 2.5rem 2.5rem 1.5rem;
             position: relative;
         }
 
         .contact-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: #C21732;
+            font-family: 'Bannertype', 'Arial Black', sans-serif;
+            font-size: 2.5rem;
+            color: #d50000;
             margin: 0;
-            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .contact-subtitle {
+            font-size: 1.5rem;
+            color: #2C3038;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
         }
 
         .contact-close {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 35px;
-            height: 35px;
-            background-color: #f0f0f0;
-            border: none;
+            top: 2rem;
+            right: 2rem;
+            width: 40px;
+            height: 40px;
+            background-color: #ffffff;
+            border: 2px solid #e0e0e0;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -447,67 +538,63 @@
         }
 
         .contact-close:hover {
-            background-color: #C21732;
+            background-color: #d50000;
+            border-color: #d50000;
             color: white;
             transform: rotate(90deg);
         }
 
         .contact-body {
-            padding: 2rem;
+            padding: 0 2.5rem 2.5rem;
         }
 
         .contact-info {
             margin-bottom: 2rem;
         }
 
-        .contact-info h3 {
-            font-size: 1.3rem;
-            color: #028137;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
         .contact-detail {
-            margin-bottom: 1rem;
             display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .contact-detail-icon {
-            color: #C21732;
-            font-weight: bold;
-            min-width: 20px;
+        .contact-detail img {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
         }
 
         .contact-detail-text {
-            color: #555;
-            line-height: 1.6;
+            color: #2C3038;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.5;
         }
 
         .contact-detail a {
-            color: #028137;
+            color: #2C3038;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .contact-detail a:hover {
-            color: #016428;
-            text-decoration: underline;
+            color: #d50000;
         }
 
         .contact-map {
             width: 100%;
             height: 300px;
             border-radius: 15px;
-            border: 2px solid #e5e5e5;
+            border: none;
             margin-top: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         /* Footer */
         .footer {
-            background-color: #028137;
+            background-color: #2C3038;
             color: #ffffff;
             padding: 3rem 2rem 1.5rem;
             text-align: center;
@@ -518,7 +605,7 @@
         }
 
         .footer-logo img {
-            height: 60px;
+            height: 70px;
             width: auto;
             margin: 0 auto 1rem;
             display: block;
@@ -541,88 +628,101 @@
         }
 
         .footer-links a:hover {
-            color: #f0f0f0;
+            color: #d50000;
             text-decoration: underline;
         }
 
         .footer-copyright {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.7);
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Mobile Widget Section (hidden on desktop) */
+        .mobile-widget-section {
+            display: none;
         }
 
         /* Responsive */
         @media (max-width: 992px) {
-            .hero {
+            .content-grid {
                 grid-template-columns: 1fr;
-                min-height: auto;
-                padding: 3rem 2rem;
+                gap: 2rem;
             }
 
-            .hero-left h1 {
-                font-size: 3rem;
-            }
-
-            .hero-left p {
-                font-size: 1.2rem;
+            .hero h1 {
+                font-size: 3.5rem;
             }
         }
 
         @media (max-width: 768px) {
             /* Hero becomes banner */
             .hero {
-                grid-template-columns: 1fr;
-                min-height: 35vh;
-                padding: 2rem 1.5rem;
-                background-attachment: scroll;
+                min-height: 40vh;
+                padding: 2rem 1.5rem 3rem;
             }
 
-            .hero-left {
-                text-align: center;
+            .hero-logo img {
+                height: 70px;
             }
 
-            .hero-left h1 {
+            .hero h1 {
                 font-size: 2.5rem;
                 margin-bottom: 0;
             }
 
-            .hero-left p {
-                display: none; /* Hide subtitle on mobile */
+            .hero p {
+                display: none;
             }
 
-            /* Widget moves below hero */
-            .hero-widget {
-                display: none; /* Widget shown separately below */
-            }
-
-            /* Widget section on mobile */
-            .mobile-widget-section {
-                display: block;
-                padding: 2rem 1rem;
-                background-color: #fff;
-            }
-
-            .mobile-widget-title {
-                text-align: center;
-                color: #C21732;
-                font-family: 'Playfair Display', serif;
-                font-size: 2rem;
+            .cocarde-container {
+                margin-top: -45px;
                 margin-bottom: 2rem;
-                font-weight: 600;
             }
 
-            .hero-widget-container {
-                padding: 1rem;
+            .cocarde-container img {
+                width: 120px;
             }
 
-            .hero-widget-title {
-                font-size: 1.8rem;
+            .main-content {
+                padding: 0 1rem 2rem;
+            }
+
+            /* Reorder on mobile */
+            .content-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            /* Widget comes first on mobile */
+            .widget-card {
+                order: 1;
+                padding: 2rem 1.5rem;
+            }
+
+            .widget-card h2 {
+                font-size: 2.2rem;
             }
 
             .zenchef-wrapper iframe {
                 height: 700px;
+            }
+
+            /* Restaurant info comes second */
+            .restaurant-card {
+                order: 2;
+                padding: 2rem;
+            }
+
+            .restaurant-card h2 {
+                font-size: 2.2rem;
+            }
+
+            .restaurant-card h3 {
+                font-size: 1.5rem;
             }
 
             .header {
@@ -630,12 +730,13 @@
             }
 
             .logo img {
-                height: 50px;
+                height: 55px;
             }
 
             .header-contact-icon {
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
+                right: 1rem;
             }
 
             .header-contact-icon img {
@@ -643,18 +744,22 @@
                 height: 20px;
             }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
             .contact-popup {
                 max-width: 95%;
                 border-radius: 20px;
             }
 
+            .contact-header,
             .contact-body {
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+
+            .contact-subtitle {
+                font-size: 1.3rem;
             }
 
             .cookie-main {
@@ -671,34 +776,25 @@
             .cookie-btn {
                 width: 100%;
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
             .hero {
-                min-height: 30vh;
+                min-height: 35vh;
             }
 
-            .hero-left h1 {
+            .hero h1 {
                 font-size: 2rem;
             }
 
-            .mobile-widget-title {
-                font-size: 1.6rem;
-            }
-
-            .header-spacer {
-                width: 40px;
-            }
-        }
-
-        /* Mobile Widget Section (shown only on mobile) */
-        .mobile-widget-section {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-widget-section {
-                display: block !important;
+            .widget-card h2,
+            .restaurant-card h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -760,7 +856,6 @@
 
     <!-- Header -->
     <header class="header">
-        <div class="header-spacer"></div>
         <a href="/" class="logo">
             <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </a>
@@ -769,16 +864,51 @@
         </button>
     </header>
 
-    <!-- Hero Section - 2 Columns Desktop -->
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-left">
-            <h1>Votre table vous attend</h1>
-            <p>Réservez en ligne en quelques secondes</p>
+        <div class="hero-logo">
+            <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
         </div>
+        <h1>Votre table vous attend</h1>
+        <p>Réservez en ligne en quelques secondes</p>
+    </section>
 
-        <div class="hero-widget">
-            <div class="hero-widget-container">
-                <h2 class="hero-widget-title">Choisissez votre créneau</h2>
+    <!-- Cocarde -->
+    <div class="cocarde-container">
+        <img src="assets/img/cocarde.svg" alt="Cocarde italienne">
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-grid">
+            <!-- Restaurant Info Card (Left Column) -->
+            <div class="restaurant-card">
+                <h2>Votre restaurant</h2>
+                <h3>Del Arte Martigues</h3>
+
+                <div class="contact-item">
+                    <img src="assets/img/location_pin.svg" alt="Adresse">
+                    <span>Avenue Auguste Baron, 13500 Martigues</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="assets/img/phone_icon.svg" alt="Téléphone">
+                    <a href="tel:+33442318501">04 42 31 85 01</a>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps?q=Av.+Auguste+Baron+13500+Martigues&z=15&output=embed"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Widget Card (Right Column) -->
+            <div class="widget-card">
+                <h2>Choisissez votre créneau</h2>
                 <div class="zenchef-wrapper">
                     <iframe
                         id="zenchef-iframe"
@@ -789,21 +919,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Mobile Widget Section (shown only on mobile) -->
-    <section class="mobile-widget-section">
-        <h2 class="mobile-widget-title">Choisissez votre créneau</h2>
-        <div class="hero-widget-container">
-            <div class="zenchef-wrapper">
-                <iframe
-                    src="https://bookings.zenchef.com/results?rid=355028&pid=1001"
-                    frameborder="0"
-                    scrolling="no">
-                </iframe>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -824,23 +940,22 @@
     <div class="contact-overlay" id="contact-overlay"></div>
     <div class="contact-popup" id="contact-popup">
         <div class="contact-header">
-            <h2 class="contact-title">Nous contacter</h2>
+            <h2 class="contact-title">Votre restaurant</h2>
+            <h3 class="contact-subtitle">Del Arte Martigues</h3>
             <button class="contact-close" id="contact-close" aria-label="Fermer">×</button>
         </div>
         <div class="contact-body">
             <div class="contact-info">
-                <h3>Del Arte Martigues</h3>
-
                 <div class="contact-detail">
-                    <span class="contact-detail-icon">📍</span>
+                    <img src="assets/img/location_pin.svg" alt="Adresse">
                     <div class="contact-detail-text">
-                        Av. Auguste Baron<br>
+                        Avenue Auguste Baron<br>
                         13500 Martigues
                     </div>
                 </div>
 
                 <div class="contact-detail">
-                    <span class="contact-detail-icon">📞</span>
+                    <img src="assets/img/phone_icon.svg" alt="Téléphone">
                     <div class="contact-detail-text">
                         <a href="tel:+33442318501">04 42 31 85 01</a>
                     </div>
