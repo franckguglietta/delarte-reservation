@@ -1,0 +1,6 @@
+<svg width="250px" height="125px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 125">
+  <g fill="none" fill-rule="nonzero">
+    <path fill="#008842" d="M166 1a40 40 0 1 1-80 0Z" opacity=".94" style="mix-blend-mode:darken"/>
+    <path fill="#EF0026" d="M250 1c-.54 68.58-56.3 124-125 124C55.96 125 0 69.04 0 0v1h42.38a82.63 82.63 0 0 0 81.25 81.62H125c45.63 0 82.63-36.99 82.63-82.62l-.01 1Z"/>
+  </g>
+</svg>
