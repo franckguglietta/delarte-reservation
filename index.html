@@ -94,7 +94,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 60vh;
+            min-height: 35vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -105,18 +105,8 @@
             background-position: center;
             color: white;
             text-align: center;
-            padding: 4rem 2rem 6rem;
+            padding: 3rem 2rem;
             margin-bottom: 0;
-        }
-
-        .hero-logo {
-            margin-bottom: 2rem;
-        }
-
-        .hero-logo img {
-            height: 100px;
-            width: auto;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
         }
 
         .hero h1 {
@@ -140,12 +130,10 @@
 
         /* Cocarde */
         .cocarde-container {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top: -60px;
-            margin-bottom: 3rem;
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 10;
         }
 
@@ -153,6 +141,12 @@
             width: 180px;
             height: auto;
             filter: drop-shadow(0 6px 16px rgba(0,0,0,0.15));
+        }
+
+        /* Hero wrapper to contain hero + cocarde */
+        .hero-wrapper {
+            position: relative;
+            margin-bottom: 70px;
         }
 
         /* Main Content Container */
@@ -189,6 +183,7 @@
         }
 
         .restaurant-card h3 {
+            font-family: 'Bannertype', 'Arial Black', sans-serif;
             font-size: 1.8rem;
             color: #2C3038;
             font-weight: 700;
@@ -206,9 +201,14 @@
         }
 
         .contact-item img {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .contact-item img[src*="phone_icon"] {
             width: 28px;
             height: 28px;
-            flex-shrink: 0;
         }
 
         .contact-item span {
@@ -512,6 +512,7 @@
         }
 
         .contact-subtitle {
+            font-family: 'Bannertype', 'Arial Black', sans-serif;
             font-size: 1.5rem;
             color: #2C3038;
             font-weight: 700;
@@ -560,9 +561,14 @@
         }
 
         .contact-detail img {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .contact-detail img[src*="phone_icon"] {
             width: 28px;
             height: 28px;
-            flex-shrink: 0;
         }
 
         .contact-detail-text {
@@ -594,7 +600,7 @@
 
         /* Footer */
         .footer {
-            background-color: #2C3038;
+            background-color: #028137;
             color: #ffffff;
             padding: 3rem 2rem 1.5rem;
             text-align: center;
@@ -660,12 +666,8 @@
         @media (max-width: 768px) {
             /* Hero becomes banner */
             .hero {
-                min-height: 40vh;
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            .hero-logo img {
-                height: 70px;
+                min-height: 30vh;
+                padding: 2rem 1.5rem;
             }
 
             .hero h1 {
@@ -677,9 +679,12 @@
                 display: none;
             }
 
+            .hero-wrapper {
+                margin-bottom: 50px;
+            }
+
             .cocarde-container {
-                margin-top: -45px;
-                margin-bottom: 2rem;
+                bottom: -50px;
             }
 
             .cocarde-container img {
@@ -785,11 +790,23 @@
 
         @media (max-width: 480px) {
             .hero {
-                min-height: 35vh;
+                min-height: 25vh;
             }
 
             .hero h1 {
                 font-size: 2rem;
+            }
+
+            .hero-wrapper {
+                margin-bottom: 40px;
+            }
+
+            .cocarde-container {
+                bottom: -40px;
+            }
+
+            .cocarde-container img {
+                width: 100px;
             }
 
             .widget-card h2,
@@ -865,17 +882,16 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-logo">
-            <img src="assets/img/delarte_logo.png" alt="Del Arte Logo">
-        </div>
-        <h1>Votre table vous attend</h1>
-        <p>Réservez en ligne en quelques secondes</p>
-    </section>
+    <div class="hero-wrapper">
+        <section class="hero">
+            <h1>Votre table vous attend</h1>
+            <p>Réservez en ligne en quelques secondes</p>
+        </section>
 
-    <!-- Cocarde -->
-    <div class="cocarde-container">
-        <img src="assets/img/cocarde.svg" alt="Cocarde italienne">
+        <!-- Cocarde -->
+        <div class="cocarde-container">
+            <img src="assets/img/cocarde.svg" alt="Cocarde italienne">
+        </div>
     </div>
 
     <!-- Main Content -->
