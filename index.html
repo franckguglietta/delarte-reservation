@@ -236,12 +236,20 @@
             border: none;
         }
 
-        /* Widget Card (Right Column) */
+        /* Reservation CTA Card (Right Column) */
         .widget-card {
             background-color: #2C3038;
             border-radius: 25px;
             padding: 3rem;
             box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            align-self: start;
+        }
+
+        .reservation-cta-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
         }
 
         .widget-card h2 {
@@ -249,24 +257,41 @@
             font-size: 2.8rem;
             color: #ffffff;
             text-transform: uppercase;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             text-align: center;
             line-height: 1;
             letter-spacing: 0.01em;
         }
 
-        .zenchef-wrapper {
-            background-color: transparent;
+        .cta-button {
+            display: inline-block;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background-color: #d50000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             border-radius: 15px;
-            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(213, 0, 0, 0.3);
         }
 
-        .zenchef-wrapper iframe {
-            width: 100%;
-            border: none;
-            border-radius: 10px;
-            display: block;
-            height: 720px;
+        .cta-button:hover {
+            background-color: #a30000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(213, 0, 0, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(213, 0, 0, 0.3);
         }
 
         /* Cookie Banner */
@@ -641,11 +666,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Mobile Widget Section (hidden on desktop) */
-        .mobile-widget-section {
-            display: none;
-        }
-
         /* Responsive */
         @media (max-width: 992px) {
             .content-grid {
@@ -690,18 +710,19 @@
                 gap: 2rem;
             }
 
-            /* Widget comes first on mobile */
+            /* Reservation CTA comes first on mobile */
             .widget-card {
                 order: 1;
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 2rem;
             }
 
             .widget-card h2 {
                 font-size: 2.2rem;
             }
 
-            .zenchef-wrapper iframe {
-                height: 700px;
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 1.3rem 1.5rem;
             }
 
             /* Restaurant info comes second */
@@ -805,6 +826,11 @@
 
             .restaurant-card h3 {
                 font-size: 1.8rem;
+            }
+
+            .cta-button {
+                font-size: 1.1rem;
+                padding: 1.2rem 1.3rem;
             }
         }
     </style>
@@ -913,16 +939,16 @@
                 </div>
             </div>
 
-            <!-- Widget Card (Right Column) -->
+            <!-- Reservation CTA Card (Right Column) -->
             <div class="widget-card">
-                <h2>Choisissez votre créneau</h2>
-                <div class="zenchef-wrapper">
-                    <iframe
-                        id="zenchef-iframe"
-                        src="https://bookings.zenchef.com/results?rid=355028&pid=1001"
-                        frameborder="0"
-                        scrolling="no">
-                    </iframe>
+                <div class="reservation-cta-content">
+                    <h2>Réservation en ligne</h2>
+                    <a href="https://bookings.zenchef.com/results?rid=355028&pid=1001"
+                       class="cta-button"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        RÉSERVEZ MAINTENANT
+                    </a>
                 </div>
             </div>
         </div>
